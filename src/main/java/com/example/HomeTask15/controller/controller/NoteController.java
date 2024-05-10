@@ -18,7 +18,7 @@ public class NoteController {
 	@Autowired private NoteService noteService;
 	@Autowired private NoteMapper noteMapper;
 
-	@PostMapping(value = "/create")
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public ModelAndView createNote(
 			@RequestParam(value="title") String title,
 			@RequestParam(value="content") String content) {
@@ -32,11 +32,10 @@ public class NoteController {
 	@GetMapping(value = "/list")
 	public ModelAndView noteList() {
 		ModelAndView result = new ModelAndView("allNotes");
-		result.addObject("notes", noteService.listAll());
+		result.addObject("notes", noteMapper.toNoteResponses(noteService.listAll()));
 		return result;
 	}
 
-	@RequestMapping(value = "/redirecturl", method = RequestMethod.POST)
 	public ModelAndView homePage() {
 		return new ModelAndView( "redirect:/note/list");
 	}
@@ -50,11 +49,11 @@ public class NoteController {
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public ModelAndView updateNote(
-			@RequestParam(value="id") UUID id,
+			@RequestParam(value="id") String id,
 			@RequestParam(value="title") String title,
 			@RequestParam(value="content") String content) throws NoteNotFoundException {
 		NoteDto newNote = new NoteDto();
-		newNote.setId(id);
+		newNote.setId(UUID.fromString(id));
 		newNote.setTitle(title);
 		newNote.setContent(content);
 		noteService.update(newNote);

@@ -1,14 +1,16 @@
 package com.example.HomeTask15.controller.request;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class UpdateNoteRequest extends NoteRequest {
 
 	public UpdateNoteRequest() {
 	}
 
 	public UpdateNoteRequest(String title, String content) {
-		super();
+		super(title, content);
 	}
 }

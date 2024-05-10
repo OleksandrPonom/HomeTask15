@@ -26,6 +26,7 @@ public class NoteMapper {
 		entity.setId(dto.getId());
 		entity.setTitle(dto.getTitle());
 		entity.setContent(dto.getContent());
+		entity.setLastUpdateDate(dto.getLastUpdatedDate());
 		return entity;
 	}
 
@@ -40,6 +41,8 @@ public class NoteMapper {
 		dto.setId(entity.getId());
 		dto.setTitle(entity.getTitle());
 		dto.setContent(entity.getContent());
+		dto.setCreatedDate(entity.getCreateDate());
+		dto.setLastUpdatedDate(entity.getLastUpdateDate());
 		return dto;
 	}
 

@@ -19,4 +19,6 @@ public interface NoteService {
 	void update(NoteDto note) throws NoteNotFoundException;
 
 	NoteDto getById(UUID id) throws NoteNotFoundException;
+
+	NoteDto getByTitle(String title) throws NoteNotFoundException;
 }

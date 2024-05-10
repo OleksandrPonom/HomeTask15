@@ -1,10 +1,11 @@
 package com.example.HomeTask15.controller.request;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public abstract class NoteRequest {
 
 	private String title;
