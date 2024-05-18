@@ -1,3 +1,5 @@
+name: Java CI with Gradle NEW
+
 on:
   release:
     types: [created]
